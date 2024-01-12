@@ -1,2 +1,2 @@
 # block-mint
-A project in StackToDeep hackathon
+A project in StackTooDeep hackathon
