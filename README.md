@@ -1,4 +1,7 @@
 # Crypto Unwrapped
+
+***Elevate your blockchain experience: Track, analyze, and thrive with our intuitive MetaMask-powered dashboard. Your journey, our insights.***
+
 A project in StackTooDeep hackathon 2024
 
 ## Contents
