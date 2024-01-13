@@ -11,7 +11,7 @@ A project in StackTooDeep hackathon 2024
 * Contributors
 
 ### Set Up
-Clone the Repository and then in the project directory run the CLI command
+Clone the Repository and then in the project directory run the CLI command `npm install packages` and then `npm run start`
 
 ### Languages/Framework and their version
 
