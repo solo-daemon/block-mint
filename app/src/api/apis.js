@@ -5,7 +5,7 @@ export async function ethbalance (setBalance) {
             "publicAddress" : "0x2B6eD29A95753C3Ad948348e3e7b1A251080Ffb9"
         }
     }).then((res)=>{
-        setBalance(100)
+        setBalance(2.45)
         console.log(res)
     }).catch(e=>{
         console.log(e)

@@ -1,4 +1,11 @@
 import Web3 from 'web3'
+async function Logout (){
+    const web3 = new Web3(window.ethereum)
+    const accounts = await web3.eth.getAccounts();
+    if(accounts.length==0){
+        window.location.href='/'
+    }
+}
 export async function loginWithMetaMask() {
     try {
         // Check if MetaMask is installed
@@ -15,7 +22,7 @@ export async function loginWithMetaMask() {
             sessionStorage.setItem('accountId',selectedAccount)
             window.location.href='/dashboard'
             console.log('Selected Account:', selectedAccount);
-
+            window.ethereum.on('accountsChanged', Logout);
         } else {
             console.log('MetaMask not installed');
         }
