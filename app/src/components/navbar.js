@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Navbar, NavbarBrand, NavbarContent, Avatar, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Snippet, NavbarItem, Button } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent, Avatar, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Snippet, NavbarItem, Button,Tooltip } from "@nextui-org/react";
 import { logout } from "../utils/logout";
 import profpic from '../resources/profpic.png'
 export const NavBar = (props)=>{
@@ -22,6 +22,12 @@ export const NavBar = (props)=>{
                     </NavbarItem>
                 </NavbarContent>
                 <NavbarContent justify="end">
+                <Tooltip>
+                    <Button color="warning">MintBLKYToken</Button>
+                </Tooltip>
+                <Tooltip>
+                    <Button color="danger">2023NFTs</Button>
+                </Tooltip>
                 <Dropdown placement="bottom-end">
                 <DropdownTrigger>
                         <Avatar

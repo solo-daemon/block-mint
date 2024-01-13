@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import './cardCarousel.css'; // Create this CSS file to style your cards
 import { Card, CardBody } from '@nextui-org/react';
 import { ethbalance } from '../api/apis';
-const CarouselCard = () =>{
+const CarouselCard = (props) =>{
     const [counter,setCounter] = React.useState(0)
-    const [balance,setBalance] = React.useState(0)
+    const [balance,setBalance] = React.useState(2.45)
     useEffect(()=>{
     let count = 0;
     const targetCount = balance; // Set your target number here
@@ -15,7 +15,7 @@ const CarouselCard = () =>{
 
     const updateCounter = () => {
         count += increment;
-        setCounter(Math.round(count))
+        setCounter(count.toFixed(2))
 
     if (count >= targetCount) {
       clearInterval(animationInterval);
@@ -25,19 +25,86 @@ const CarouselCard = () =>{
   const animationInterval = setInterval(updateCounter, interval);
     },[balance])
 
-  useEffect(()=>{
-    ethbalance(setBalance)
-  },[])
     return (
-        <div className='h-80 bg-zinc-800'>
-            <Card className='min-w-[700px] bg-zinc-800 text-slate-100'>
+        <div className='h-80 bg-neutral-600'>
+            <Card className='min-w-[700px] bg-neutral-600 text-slate-100'>
             <CardBody>
                 <div className='flex justify-center text-9xl py-8 my-2'> {counter + 'eth'} </div>
-                <div className='flex justify-center text-3xl my-6'>Toal no of nfts</div>
+                <div className='flex justify-center text-3xl my-6'>Total balance</div>
             </CardBody>
         </Card>
         </div>
     )
+}
+
+const CarouselCard2 = (props) =>{
+  const [counter,setCounter] = React.useState(0)
+  const [balance,setBalance] = React.useState(15)
+  useEffect(()=>{
+  let count = 0;
+  const targetCount = balance; // Set your target number here
+  const duration = 2000; // Set the duration of the animation in milliseconds
+  const interval = 10; // Set the interval for each step in milliseconds
+
+  const increment = targetCount / (duration / interval);
+
+  const updateCounter = () => {
+      count += increment;
+      setCounter(Math.floor(balance))
+
+  if (count >= targetCount) {
+    clearInterval(animationInterval);
+    setCounter(targetCount)
+  }
+};
+const animationInterval = setInterval(updateCounter, interval);
+  },[balance])
+
+  return (
+      <div className='h-80 bg-neutral-600'>
+          <Card className='min-w-[700px] bg-neutral-600 text-slate-100'>
+          <CardBody>
+              <div className='flex justify-center text-9xl py-8 my-2'> {counter} </div>
+              <div className='flex justify-center text-3xl my-6'>Total no of NFTs</div>
+          </CardBody>
+      </Card>
+      </div>
+  )
+}
+
+const CarouselCard3 = (props) =>{
+  const [counter,setCounter] = React.useState(0)
+  const [balance,setBalance] = React.useState(15347)
+  useEffect(()=>{
+  let count = 0;
+  const targetCount = balance; // Set your target number here
+  const duration = 2000; // Set the duration of the animation in milliseconds
+  const interval = 10; // Set the interval for each step in milliseconds
+
+  const increment = targetCount / (duration / interval);
+
+  const updateCounter = () => {
+      count += increment;
+      setCounter(Math.floor(balance))
+
+  if (count >= targetCount) {
+    clearInterval(animationInterval);
+    setCounter(targetCount)
+  }
+};
+const animationInterval = setInterval(updateCounter, interval);
+  },[balance])
+
+  return (
+      <div className='h-80 bg-neutral-600'>
+          <Card className='min-w-[700px] bg-neutral-600 text-slate-100'>
+          <CardBody>
+              <div className='flex justify-center text-9xl py-8 my-2'> {counter} </div>
+              <div className='flex justify-center text-3xl my-6'>Total transactions</div>
+          </CardBody>
+      </Card>
+      </div>
+  )
 }
 
 const CardCarousel = () => {
@@ -64,11 +131,11 @@ const CardCarousel = () => {
             </div>
 
             <div className="card" id="card2">
-            <CarouselCard/>
+            <CarouselCard2/>
             </div>
 
             <div className="card" id="card3">
-            <CarouselCard/>
+            <CarouselCard3/>
             </div>
         </div>
 
