@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import { Navbar, NavbarBrand, NavbarContent, Avatar, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Snippet } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent, Avatar, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Snippet, NavbarItem, Button } from "@nextui-org/react";
+import { logout } from "../utils/logout";
 import profpic from '../resources/profpic.png'
-export const NavBar = ()=>{
+export const NavBar = (props)=>{
     const [accountId,setAccountId] = React.useState("")
     useEffect(()=>{
         const accountid = sessionStorage.getItem('accountId')
@@ -12,6 +13,14 @@ export const NavBar = ()=>{
             <NavbarBrand className="text-slate-100">
                     Blockify
                 </NavbarBrand>
+                <NavbarContent justify="center">
+                    <NavbarItem>
+                        {props.page==="personal"? <Button color="primary">Personal</Button> : <Button onClick={()=>{props.setPage('personal')}}>Personal</Button>}
+                    </NavbarItem>
+                    <NavbarItem>
+                    {props.page==="wall"? <Button color="primary">Wall</Button> : <Button onClick={()=>{props.setPage('wall')}}>Wall</Button>}
+                    </NavbarItem>
+                </NavbarContent>
                 <NavbarContent justify="end">
                 <Dropdown placement="bottom-end">
                 <DropdownTrigger>
@@ -29,7 +38,7 @@ export const NavBar = ()=>{
                     <DropdownItem key="accountid">
                         <Snippet size="sm" codeString={accountId}>{accountId.substring(0,10)+'...'}</Snippet>
                     </DropdownItem>
-                    <DropdownItem key="logout" color="danger">logout</DropdownItem>
+                    <DropdownItem key="logout" color="danger" onClick={logout}>logout</DropdownItem>
                 </DropdownMenu>
             </Dropdown>
                 </NavbarContent>

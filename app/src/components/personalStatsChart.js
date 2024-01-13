@@ -31,7 +31,7 @@ export const PersonalStatsChart = () =>{
 
   return (
     <div className="flex justify-center my-4">
-        <Card className="min-w-[700px] ">
+        <Card className="min-w-[700px]">
             <CardBody>
                 <div className="h-80">
                     <Line data={data}></Line>
