@@ -2,16 +2,14 @@ import React from "react";
 import { PersonalStatsChart } from "../components/personalStatsChart";
 import { PersonalStats } from "../components/personalStats";
 import { PersonalTokenCollage } from "../components/personalTokenCollage";
+import CardCarousel from "../components/CardCarousel";
+
 export const PersonalWrapped = () =>{
     return (
         <>
-            <PersonalStats />
-            <div
-                className="h-96"
-            >
+                <CardCarousel />
                 <PersonalStatsChart />
                 <PersonalTokenCollage />
-            </div>
         </>
     )
 }

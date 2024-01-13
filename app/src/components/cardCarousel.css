@@ -1,0 +1,82 @@
+/* styles.css */
+
+  
+  .card-carousel {
+    position: relative;
+    width: 300px;
+    overflow: hidden;
+  }
+  
+  input[type="radio"] {
+    display: none;
+  }
+  
+  .cards {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .card {
+    flex: 0 0 100%;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  input:checked ~ .cards {
+    transform: translateX(calc(-100% * (0)));
+  }
+  
+  .dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+  }
+  
+  label {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #aaa;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  #card1:checked ~ .dots label:nth-child(1),
+  #card2:checked ~ .dots label:nth-child(2),
+  #card3:checked ~ .dots label:nth-child(3) {
+    background-color: #f5f0f0;
+  }
+  
+  .controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+  }
+  
+  .prev,
+  .next {
+    cursor: pointer;
+  }
+  
+  .prev {
+    order: 1;
+  }
+  
+  .next {
+    order: 2;
+  }
+  
+  #card1:checked ~ .controls .prev,
+  #card3:checked ~ .controls .next {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+  
