@@ -34,8 +34,7 @@ contract BlockifyNFT is ERC721Enumerable, Ownable {
 
     /**
         * @dev ERC721 constructor takes in a `name` and a `symbol` to the token collection.
-        * name in our case is `LW3Punks` and symbol is `LW3P`.
-        * Constructor for LW3P takes in the baseURI to set _baseTokenURI for the collection.
+        * Constructor for BLKY23 takes in the baseURI to set _baseTokenURI for the collection.
         */
     constructor (string memory baseURI) ERC721("BlockifyNFT", "BLKY23") Ownable(msg.sender){
         _baseTokenURI = baseURI;

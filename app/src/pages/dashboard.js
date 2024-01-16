@@ -190,6 +190,7 @@ export const Dashboard = () =>{
     const [page,setPage] = React.useState("personal")
     return (
         <>
+        <div>hello</div>
             {page==="personal" ?<OtherAnimatedBackground /> :
                 <AnimatedBackground />
         }

@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import './cardCarousel.css'; // Create this CSS file to style your cards
 import { Card, CardBody } from '@nextui-org/react';
-import { ethbalance } from '../api/apis';
+import { ethbalance, transactionList } from '../api/apis';
+import { getNFTs } from '../alchemy-nft-api/alchemy-sdk-script';
 const CarouselCard = (props) =>{
     const [counter,setCounter] = React.useState(0)
-    const [balance,setBalance] = React.useState(2.45)
+    const [balance,setBalance] = React.useState(0)
     useEffect(()=>{
     let count = 0;
     const targetCount = balance; // Set your target number here
-    const duration = 2000; // Set the duration of the animation in milliseconds
+    const duration = 3000; // Set the duration of the animation in milliseconds
     const interval = 10; // Set the interval for each step in milliseconds
 
     const increment = targetCount / (duration / interval);
@@ -24,7 +25,9 @@ const CarouselCard = (props) =>{
   };
   const animationInterval = setInterval(updateCounter, interval);
     },[balance])
-
+    useEffect(()=>{
+      ethbalance(setBalance)
+    },[])
     return (
         <div className='h-80 bg-neutral-600'>
             <Card className='min-w-[700px] bg-neutral-600 text-slate-100'>
@@ -39,11 +42,11 @@ const CarouselCard = (props) =>{
 
 const CarouselCard2 = (props) =>{
   const [counter,setCounter] = React.useState(0)
-  const [balance,setBalance] = React.useState(15)
+  const [balance,setBalance] = React.useState(0)
   useEffect(()=>{
   let count = 0;
   const targetCount = balance; // Set your target number here
-  const duration = 2000; // Set the duration of the animation in milliseconds
+  const duration = 1500; // Set the duration of the animation in milliseconds
   const interval = 10; // Set the interval for each step in milliseconds
 
   const increment = targetCount / (duration / interval);
@@ -59,6 +62,10 @@ const CarouselCard2 = (props) =>{
 };
 const animationInterval = setInterval(updateCounter, interval);
   },[balance])
+
+useEffect(()=>{
+  getNFTs(setBalance)
+},[])
 
   return (
       <div className='h-80 bg-neutral-600'>
@@ -74,10 +81,10 @@ const animationInterval = setInterval(updateCounter, interval);
 
 const CarouselCard3 = (props) =>{
   const [counter,setCounter] = React.useState(0)
-  const [balance,setBalance] = React.useState(15347)
+  const [transaction,setTransaction] = React.useState(0)
   useEffect(()=>{
   let count = 0;
-  const targetCount = balance; // Set your target number here
+  const targetCount = transaction; // Set your target number here
   const duration = 2000; // Set the duration of the animation in milliseconds
   const interval = 10; // Set the interval for each step in milliseconds
 
@@ -85,7 +92,7 @@ const CarouselCard3 = (props) =>{
 
   const updateCounter = () => {
       count += increment;
-      setCounter(Math.floor(balance))
+      setCounter(Math.floor(transaction))
 
   if (count >= targetCount) {
     clearInterval(animationInterval);
@@ -93,8 +100,10 @@ const CarouselCard3 = (props) =>{
   }
 };
 const animationInterval = setInterval(updateCounter, interval);
-  },[balance])
-
+  },[transaction])
+useEffect(()=>{
+  transactionList(setTransaction)
+},[])
   return (
       <div className='h-80 bg-neutral-600'>
           <Card className='min-w-[700px] bg-neutral-600 text-slate-100'>
